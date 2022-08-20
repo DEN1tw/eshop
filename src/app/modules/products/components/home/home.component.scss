@@ -1,0 +1,22 @@
+.search-results {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  height: calc(100vh - 168px);
+  overflow-y: scroll;
+}
+
+.tui-island__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tui-island__paragraph {
+  height: 180px;
+}
+
+.tui-island__figure img {
+  width: 64px;
+  height: max-content;
+}

@@ -1,0 +1,14 @@
+<div class="logo">
+  <p class="tui-text_h4">Smart hardware shop</p>
+</div>
+<div class="controls" *ngIf="user$ | async as user; else noAuthTpl">
+  <tui-avatar
+    [text]="user.toString()"
+    [avatarUrl]="user.avatar || null"
+    class="tui-space_top-1"></tui-avatar>
+  <p class="logout" (click)="logout()">Logout</p>
+</div>
+
+<ng-template #noAuthTpl>
+  <a class="login" [routerLink]="['/login']">Login</a>
+</ng-template>

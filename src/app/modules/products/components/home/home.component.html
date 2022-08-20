@@ -1,0 +1,11 @@
+<div
+  class="search-results"
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollThrottle]="throttle"
+  [scrollWindow]="false"
+  (scrolled)="onScrollDown($event)">
+  <app-card
+    [product]="product"
+    *ngFor="let product of products; trackBy: trackByFn"></app-card>
+</div>

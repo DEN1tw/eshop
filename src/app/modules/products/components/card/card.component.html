@@ -1,0 +1,42 @@
+<tui-island *ngIf="product">
+  <div class="top" title="{{ product.name }}">
+    <ng-container
+      [ngTemplateOutlet]="picsCarouselTpl"
+      [ngTemplateOutletContext]="{
+        pics: product.images,
+        discount: product.discount
+      }">
+    </ng-container>
+    <p class="title tui-text_h6">{{ product.name }}</p>
+  </div>
+  <div class="description" title="{{ product.description }}">
+    {{ (product.description | slice: 0:80) + '...' }}
+  </div>
+  <div class="extra">
+    <div class="price">
+      <tui-money [currency]="'EUR'" [value]="product.price"></tui-money>
+    </div>
+    <button tuiButton appearance="primary" size="s" [disabled]="true">
+      Add to cart
+    </button>
+  </div>
+</tui-island>
+
+<ng-template let-pics="pics" let-discount="discount" #picsCarouselTpl>
+  <tui-carousel
+    [duration]="0"
+    [(index)]="picsIndex"
+    [attr.data-discount]="discount | appDiscount">
+    <ng-container *ngFor="let pic of pics; trackBy: trackByFn">
+      <div *tuiItem>
+        <img class="pic" src="{{ pic }}" />
+      </div>
+    </ng-container>
+  </tui-carousel>
+  <tui-pagination
+    size="s"
+    class="pagination"
+    [length]="pics.length"
+    [(index)]="picsIndex">
+  </tui-pagination>
+</ng-template>

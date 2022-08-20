@@ -1,0 +1,20 @@
+<form
+  #searchForm="ngForm"
+  (ngSubmit)="redirectAndSearch(searchForm.form.get('searchText'))">
+  <div class="bar tui-space_bottom-3">
+    <tui-input
+      tuiTextfieldSize="m"
+      [(ngModel)]="searchText"
+      name="searchText"
+      [tuiTextfieldLabelOutside]="true">
+      Search
+      <input tuiTextfield type="text" />
+    </tui-input>
+    <button
+      tuiIconButton
+      type="submit"
+      icon="tuiIconSearch"
+      class="tui-space_left-3"
+      size="m"></button>
+  </div>
+</form>

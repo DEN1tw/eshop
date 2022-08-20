@@ -1,0 +1,37 @@
+<tui-island class="tui-space_bottom-3" *ngIf="product">
+  <div class="container">
+    <img class="pic" src="{{ product.productFull!.defaultImage }}" />
+    <span class="tui-text_body-l tui-space_top-1">{{
+      product.productFull!.name
+    }}</span>
+    <div class="price">
+      <tui-money
+        [currency]="'EUR'"
+        [value]="product.productFull!.price"></tui-money>
+    </div>
+
+    <div class="counter tui-space_top-1">
+      <tui-loader
+        class="inline-flex tui-space_right-2"
+        [showLoader]="isLoading"
+        [inheritColor]="true"
+        [overlay]="true">
+        <label *ngIf="quantityCtrl.value">
+          <tui-input-count [formControl]="quantityCtrl" [min]="0">
+            Count something
+            <input tuiTextfield placeholder="1.. 2.. 3.." />
+          </tui-input-count>
+        </label>
+
+        <button
+          tuiButton
+          appearance="primary"
+          size="s"
+          *ngIf="!quantityCtrl.value"
+          (click)="add()">
+          Add to cart
+        </button>
+      </tui-loader>
+    </div>
+  </div>
+</tui-island>

@@ -1,0 +1,53 @@
+<form class="container" [formGroup]="userForm" *ngIf="users$ | async as users">
+  <tui-input
+    *tuiLet="users"
+    formControlName="user"
+    [tuiTextfieldCustomContent]="content">
+    User
+    <input tuiTextfield placeholder="Type your name or surname" />
+    <ng-container *ngIf="users.length">
+      <tui-data-list *tuiDataList>
+        <button
+          tuiOption
+          [ngClass]="{ 'is-admin': user.role === 'ADMIN' }"
+          [value]="user.toString()"
+          (click)="onSelected(user)"
+          *ngFor="let user of users; trackBy: trackByFn">
+          {{ user }}
+          <tui-avatar
+            size="xs"
+            [avatarUrl]="user.avatar || null"
+            [text]="user.toString()"></tui-avatar>
+        </button>
+      </tui-data-list>
+    </ng-container>
+  </tui-input>
+  <button
+    tuiButton
+    type="button"
+    class="btn-login tui-space_top-3"
+    [disabled]="!isUserSelected"
+    (click)="auth()">
+    <ng-container
+      [ngTemplateOutlet]="loginBtnTextTpl"
+      [ngTemplateOutletContext]="{
+        isUserSelected: isUserSelected
+      }"></ng-container>
+  </button>
+</form>
+
+<ng-template #avatarTpl>
+  <tui-avatar
+    *ngIf="selectedUser"
+    size="s"
+    [rounded]="true"
+    [avatarUrl]="selectedUser.avatar || null"
+    [text]="selectedUser.toString()"></tui-avatar>
+</ng-template>
+
+<ng-template #loginBtnTextTpl let-isUserSelected="isUserSelected">
+  <ng-container *ngIf="isUserSelected"
+    >Login as {{ selectedUser?.role | lowercase }}</ng-container
+  >
+  <ng-container *ngIf="!isUserSelected">Login</ng-container>
+</ng-template>

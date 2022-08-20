@@ -1,0 +1,35 @@
+.pic {
+  width: 100%;
+}
+
+.title {
+  margin: 6px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description, .price {
+  margin: 6px 0;
+}
+
+.description {
+  height: 112px;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+
+tui-carousel:before {
+  content: attr(data-discount);
+  padding: 3px 6px;
+  color: var(--tui-base-01);
+  background: var(--tui-negative);
+  position: absolute;
+  border-radius: 4px;
+  font-size: 12px;
+  bottom: 0;
+  z-index: 1;
+}

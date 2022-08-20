@@ -1,0 +1,13 @@
+<p class="title tui-text_h6">Cart</p>
+
+<div class="container" *ngIf="cart; else emptyCartTpl">
+  <app-cart-item
+    [product]="item"
+    (quantityChange)="handleProductQuantityChange($event)"
+    *ngFor="let item of cart.products; trackBy: trackByFn">
+  </app-cart-item>
+</div>
+
+<ng-template #emptyCartTpl>
+  <app-cart-empty></app-cart-empty>
+</ng-template>

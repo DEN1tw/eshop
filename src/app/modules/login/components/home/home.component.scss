@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  width: 18rem;
+}
+
+.is-admin:before {
+  content:" *";
+  position: absolute;
+  left: 4px;
+}
+
+.btn-login {
+  width: 100%;
+}

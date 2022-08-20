@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.title {
+  margin: 0 0 0.75rem;
+}
+
+.container {
+  height: calc(100vh - 142px);
+  overflow-y: scroll;
+}
